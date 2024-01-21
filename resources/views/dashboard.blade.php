@@ -11,6 +11,10 @@
                 <div class="p-6 text-gray-900">
                     Здравствуйте, {{ \Illuminate\Support\Facades\Auth::user()->name }}!
                 </div>
+                <div class="px-6 text-gray-900 mb-6">
+                    Для управления контентом сайта,
+                    перейдите в панель администратора и выберите нужный вам раздел.
+                </div>
             </div>
         </div>
     </div>

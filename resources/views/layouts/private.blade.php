@@ -6,12 +6,13 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
         <livewire:styles />
+        <link href="{{ asset('vendor/bladewind/css/animate.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('vendor/bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -24,11 +25,11 @@
                     </div>
                 </header>
             @endif
-
             <main>
                 {{ $slot }}
             </main>
         </div>
         <livewire:scripts />
+        <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
     </body>
 </html>
