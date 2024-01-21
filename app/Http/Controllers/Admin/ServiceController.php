@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceCreateFormRequest;
+use App\Http\Requests\ServiceUpdateFormRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceCreateFormRequest $request)
     {
         //
     }
@@ -47,15 +49,20 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('admin.services.edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceUpdateFormRequest $request, Service $service)
     {
-        //
+        $validated = $request->validated();
+        $service->name = $validated['name'];
+        $service->description = $validated['description'];
+        $service->price = $validated['price'];
+        $service->save();
+        return redirect(route('admin.services.index'))->with(['successNotify' => 'Услуга была изменена.']);
     }
 
     /**
