@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceCreateFormRequest;
 use App\Http\Requests\ServiceUpdateFormRequest;
+use App\Models\Request;
 use App\Models\Service;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use SebastianBergmann\CodeCoverage\Driver\Selector;
 
 class ServiceController extends Controller
 {
@@ -21,19 +23,28 @@ class ServiceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(ServiceCreateFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $service = Service::create($validated);
+        if ($service) {
+            return redirect(route('admin.services.index'))->with([
+                'successNotify' => 'Услуга успешно создана.'
+            ]);
+        }
+        return redirect(route('admin.services.index'))->with([
+            'errorNotify' => 'Произошла ошибка.'
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin.services.create');
     }
 
     /**
@@ -59,6 +70,7 @@ class ServiceController extends Controller
     {
         $validated = $request->validated();
         $service->name = $validated['name'];
+        $service->short_description = $validated['short_description'];
         $service->description = $validated['description'];
         $service->price = $validated['price'];
         $service->save();
@@ -70,6 +82,13 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        if ($service->delete()) {
+            return redirect(route('admin.services.index'))->with([
+                'successNotify' => 'Услуга была удалена.'
+            ]);
+        }
+        return redirect(route('admin.services.index'))->with([
+            'errorNotify' => 'Произошла ошибка.'
+        ]);
     }
 }

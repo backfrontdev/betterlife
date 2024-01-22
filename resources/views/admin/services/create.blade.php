@@ -1,57 +1,116 @@
-@extends('layouts.admin')
+<x-private-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <span>Список услуг</span>
+        </h2>
+        <a class="btn" href="{{ route('admin.services.create') }}">
+            Добавить
+        </a>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <form method="POST" action="{{ route('admin.services.store') }}" enctype="multipart/form-data">
+                        @csrf
 
-@section('title', 'Добавить услугу')
+                        @error('formError')
+                        {{ $message }}
+                        @enderror
 
-@section('admin-content')
-    <h2 class="text-center text-green mt-5">Добавить услугу</h2>
-    <form method="POST" action="{{ route('admin.services.store') }}" enctype="multipart/form-data">
-        @csrf
-        @error('formError')
-        <div class="danger alert-danger p-2 mb-2 fadeInLeft">
-            <i class="fas fa-times-circle"></i>
-            {{ $message }}
+                        <div class="mb-5">
+                            <label for="name"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите название
+                            </label>
+                            <input type="text"
+                                   id="name"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Название"
+                                   required
+                                   name="name"
+                                   value="{{ old('name') }}"
+                            >
+                            @error('name')
+                            <x-input-error :messages="$message" class="mt-2"/>
+                            @enderror
+                        </div>
+
+
+                        <div class="mb-5">
+                            <label for="short_description"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите краткое описание
+                            </label>
+                            <input type="text"
+                                   id="short_description"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Превью"
+                                   required
+                                   name="short_description"
+                                   value="{{ old('short_description') }}"
+                            >
+                            @error('short_description')
+                            <x-input-error :messages="$message" class="mt-2"/>
+                            @enderror
+                        </div>
+
+
+                        <div class="mb-5">
+                            <label for="description"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите описание
+                            </label>
+                            <textarea type="text"
+                                   id="description"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Описание"
+                                   required
+                                   name="description"
+                            >{{ old('description') }}</textarea>
+                            @error('description')
+                            <x-input-error :messages="$message" class="mt-2"/>
+                            @enderror
+                        </div>
+
+
+                        <div class="mb-5">
+                            <label for="price"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите цену
+                            </label>
+                            <input type="text"
+                                   id="price"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Цена"
+                                   required
+                                   name="price"
+                                   value="{{ old('price') }}"
+                            >
+                            @error('price')
+                            <x-input-error :messages="$message" class="mt-2"/>
+                            @enderror
+                        </div>
+
+                        <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                            Добавить
+                        </button>
+                        <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                           href="{{ route('admin.services.index') }}"
+                        >
+                            Назад
+                        </a>
+                    </form>
+
+
+                </div>
+            </div>
         </div>
-        @enderror
-        <div class="mb-3">
-            <label for="name" class="form-label">Введите название</label>
-            <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="name" max="255">
-            @error('name')
-            <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Введите описание</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="3" id="description">{{ old('description') }}</textarea>
-            @error('description')
-            <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Цена</label>
-            <input type="number" step="0.01" name="price" value="{{ old('price') }}" class="form-control @error('price') is-invalid @enderror" id="price">
-            @error('price')
-            <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="category" class="form-label">Выберите категорию</label>
-            <select class="form-select @error('service_category_id') is-invalid @enderror" id="category" name="service_category_id">
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}" @if($category->id == old('service_category_id')) selected @endif>{{ $category->name }}</option>
-                @endforeach
-            </select>
-            @error('service_category_id')
-            <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Выберите изображение</label>
-            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-            @error('image')
-            <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
-            @enderror
-        </div>
-        <button type="submit" class="btn btn-green">Добавить</button>
-    </form>
-    <a href="{{ route('admin.services.index') }}" class="btn btn-green-outline mt-3"><i class="fas fa-arrow-left"></i> Назад</a>
-@endsection
+    </div>
+    <
+</x-private-layout>

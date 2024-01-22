@@ -1,8 +1,11 @@
 <x-private-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Список услуг
+            <span>Список услуг</span>
         </h2>
+        <a class="btn" href="{{ route('admin.services.create') }}">
+            Добавить
+        </a>
     </x-slot>
 
     <div class="py-12">

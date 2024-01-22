@@ -25,7 +25,8 @@ class ServiceUpdateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => 'required|string',
+            'short_description' => 'nullable|string',
             'description' => 'required|string',
             'price' => 'required|numeric',
         ];

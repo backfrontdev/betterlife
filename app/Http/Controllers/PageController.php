@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PageController extends Controller
 {
     public static function index() {
-        $services = DB::table('services')->latest()->limit(3)->get();
+        $services = DB::table('services')->limit(3)->orderBy('price')->get();
         return view('index', [
             'services' => $services,
         ]);

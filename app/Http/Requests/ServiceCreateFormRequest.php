@@ -25,6 +25,7 @@ class ServiceCreateFormRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:services|max:255',
+            'short_description' => 'string',
             'description' => 'required|string',
             'price' => 'required|numeric',
         ];

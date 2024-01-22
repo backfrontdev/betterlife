@@ -15,6 +15,7 @@
                     Better Life
                 </a>
             </div>
+            @if(false)
             <div class="flex lg:hidden">
                 <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
                     <span class="sr-only">Открыть основное меню</span>
@@ -25,12 +26,14 @@
                     </svg>
                 </button>
             </div>
+            @endif
             <div class="hidden lg:flex lg:gap-x-12">
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Сертификаты</a>
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Услуги</a>
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Обо мне</a>
             </div>
         </nav>
+        @if(false)
         <div class="lg:hidden" role="dialog" aria-modal="true">
             <div class="fixed inset-0 z-10"></div>
             <div
@@ -70,6 +73,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </header>
     <div class="max-w-7xl mx-auto p-6 lg:px-8">
         {{ $slot }}
