@@ -9,20 +9,62 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form method="POST" action="{{ route('admin.services.update', $service) }}" enctype="multipart/form-data">
+                    <form class="" action="{{ route('admin.services.update', $service) }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('PUT')
 
                         @error('formError')
-                        <div class="danger alert-danger p-2 mb-2 fadeInLeft">
-                            <i class="fas fa-times-circle"></i>
-                            {{ $message }}
-                        </div>
+                        {{ $message }}
                         @enderror
 
+                        <div class="mb-5">
+                            <label for="name"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите название
+                            </label>
+                            <input type="text"
+                                   id="name"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Услуга"
+                                   required
+                                   value="{{ old('description', $service->name) }}"
+                            >
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="short_description"
+                                   class="block mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Введите краткое описание
+                            </label>
+                            <input type="text"
+                                   id="short_description"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                   placeholder="Описание"
+                                   required
+                                   name="short_description"
+                                   value="{{ old('description', $service->short_description) }}"
+                            >
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+                            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                        </div>
+                        <div class="flex items-start mb-5">
+                            <div class="flex items-center h-5">
+                                <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required>
+                            </div>
+                            <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Remember me</label>
+                        </div>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                    </form>
+
+                    <form>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Введите название</label>
-                            <input type="text" name="name" value="{{ old('name', $service->name) }}" class="form-control @error('name') is-invalid @enderror" id="name" max="255">
+                            <label for="name" class="form-label"></label>
+                            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" id="name" max="255">
                             @error('name')
                             <span class="invalid-feedback fadeInLeft" role="alert">{{ $message }}</span>
                             @enderror

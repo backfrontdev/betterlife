@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
     public static function index() {
-        return view('index');
+        $services = DB::table('services')->latest()->limit(3)->get();
+        return view('index', [
+            'services' => $services,
+        ]);
     }
 
     public static function admin() {
