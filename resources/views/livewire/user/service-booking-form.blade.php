@@ -9,7 +9,7 @@
                     @csrf
 
                     <div class="mt-6">
-                        <x-input-label for="name" value="{{ __('Пароль') }}" class="sr-only"/>
+                        <x-input-label for="name" value="{{ __('Имя') }}" class="sr-only"/>
                         <x-text-input
                             id="name"
                             name="name"
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <x-input-label for="phone" value="{{ __('Пароль') }}" class="sr-only"/>
+                        <x-input-label for="phone" value="{{ __('Телефон') }}" class="sr-only"/>
                         <x-text-input
                             id="phone"
                             name="phone"
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <x-input-label for="tg_account" value="{{ __('Пароль') }}" class="sr-only"/>
+                        <x-input-label for="tg_account" value="{{ __('Телеграм аккаунт') }}" class="sr-only"/>
                         <x-text-input
                             id="tg_account"
                             name="tg_account"
