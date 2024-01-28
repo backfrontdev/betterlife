@@ -18,9 +18,9 @@
 {{--                    <x-link :href="route('admin.services.index')">--}}
 {{--                        Сертификаты--}}
 {{--                    </x-link>--}}
-{{--                    <x-link :href="route('admin.services.index')">--}}
-{{--                        Заявки на обратную связь--}}
-{{--                    </x-link>--}}
+                    <x-link :href="route('admin.requests.index')">
+                        Заявки на обратную связь
+                    </x-link>
                 </div>
             </div>
         </div>

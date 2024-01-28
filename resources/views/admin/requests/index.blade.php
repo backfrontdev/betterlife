@@ -4,18 +4,15 @@
             <x-back-icon></x-back-icon>
         </x-link>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <span>Список услуг</span>
+            <span>Список заявок</span>
         </h2>
-        <a class="btn" href="{{ route('admin.services.create') }}">
-            Добавить
-        </a>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <livewire:admin.services-list />
+                    <livewire:admin.requests-list />
                 </div>
             </div>
         </div>

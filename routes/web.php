@@ -45,6 +45,14 @@ Route::group(['as' => 'admin.', 'middleware' => ['auth', 'admin'], 'prefix' => '
         Route::put('/{service}/update', [Controllers\Admin\ServiceController::class, 'update'])->name('update');
         Route::delete('/{service}', [Controllers\Admin\ServiceController::class, 'destroy'])->name('destroy');
     });
+    Route::group(['as' => 'requests.', 'prefix' => 'requests'], function() {
+        Route::get('/', [Controllers\Admin\RequestController::class, 'index'])->name('index');
+        Route::get('/create', [Controllers\Admin\RequestController::class, 'create'])->name('create');
+        Route::post('/store', [Controllers\Admin\RequestController::class, 'store'])->name('store');
+        Route::get('/{service}/edit', [Controllers\Admin\RequestController::class, 'edit'])->name('edit');
+        Route::put('/{service}/update', [Controllers\Admin\RequestController::class, 'update'])->name('update');
+        Route::delete('/{service}', [Controllers\Admin\RequestController::class, 'destroy'])->name('destroy');
+    });
 //    Route::group(['as' => 'employees.', 'prefix' => 'employees'], function() {
 //        Route::get('/', [EmployeeController::class, 'index'])->name('index');
 //        Route::get('/create', [EmployeeController::class, 'create'])->name('create');

@@ -1,5 +1,8 @@
 <x-private-layout>
     <x-slot name="header">
+        <x-link :href="route('admin.services.index')">
+            <x-back-icon></x-back-icon>
+        </x-link>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Изменить услугу "{{ $service->name }}"
         </h2>
