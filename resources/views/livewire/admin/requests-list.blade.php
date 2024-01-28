@@ -1,6 +1,5 @@
 <div>
     @if(count($requests) > 0)
-
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -36,14 +35,11 @@
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
         </div>
-
-
         {{ $requests->links() }}
     @else
-        <h4>Услуг пока нет.</h4>
+        <h4>Заявок пока нет.</h4>
     @endif
 </div>

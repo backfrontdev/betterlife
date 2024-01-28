@@ -7,7 +7,6 @@
             @if(!session()->has('formSuccess'))
                 <form wire:submit.prevent="submit" class="feedback-form">
                     @csrf
-
                     <div class="mt-6">
                         <x-input-label for="name" value="{{ __('Имя') }}" class="sr-only"/>
                         <x-text-input
@@ -23,7 +22,6 @@
                         <x-input-error :messages="$message" class="mt-2"/>
                         @enderror
                     </div>
-
                     <div class="mt-6">
                         <x-input-label for="phone" value="{{ __('Телефон') }}" class="sr-only"/>
                         <x-text-input
@@ -39,7 +37,6 @@
                         <x-input-error :messages="$message" class="mt-2"/>
                         @enderror
                     </div>
-
                     <div class="mt-6">
                         <x-input-label for="tg_account" value="{{ __('Телеграм аккаунт') }}" class="sr-only"/>
                         <x-text-input
@@ -55,12 +52,10 @@
                         <x-input-error :messages="$message" class="mt-2"/>
                         @enderror
                     </div>
-
                     <div class="mt-6 flex justify-end gap-2">
                         <x-secondary-button x-on:click="$dispatch('close')">
                             Отменить
                         </x-secondary-button>
-
                         <button
                             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                             wire:target="submit" wire:loading.attr="disabled"
@@ -85,3 +80,5 @@
         </div>
     </x-modal>
 </div>
+
+

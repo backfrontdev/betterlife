@@ -17,7 +17,6 @@ class CreateReviewForm extends Component
         return view('livewire.user.create-review-form');
     }
 
-
     public function submit()
     {
         $validated = $this->validate([
@@ -26,11 +25,8 @@ class CreateReviewForm extends Component
             'user_name' => 'required|string',
             'user_work' => 'nullable|string',
         ]);
-
         Review::create($validated);
-
         session()->flash('formSuccess', 'Отзыв отправлен');
-
         $this->reset();
     }
 }
