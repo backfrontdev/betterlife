@@ -3,7 +3,6 @@
 namespace App\Livewire\User;
 
 use App\Models\Request;
-use App\Models\Service;
 use Livewire\Component;
 
 class ServiceBookingForm extends Component

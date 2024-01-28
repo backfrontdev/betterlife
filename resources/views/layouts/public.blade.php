@@ -29,9 +29,10 @@
             </div>
         @endif
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Сертификаты</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Услуги</a>
-            <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Обо мне</a>
+            <a href="#about" class="text-sm font-semibold leading-6 text-gray-900">Обо мне</a>
+            <a href="#certificates" class="text-sm font-semibold leading-6 text-gray-900">Сертификаты</a>
+            <a href="#services" class="text-sm font-semibold leading-6 text-gray-900">Услуги</a>
+            <a href="#reviews" class="text-sm font-semibold leading-6 text-gray-900">Отзывы</a>
         </div>
     </nav>
     @if(false)
@@ -84,13 +85,16 @@
         <span class="text-sm text-gray-500 sm:text-center">© {{ date('Y') }} <a href="/" class="hover:underline">Better Life</a>. Все права защищены.</span>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
             <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Сертификаты</a>
+                <a href="#about" class="hover:underline me-4 md:me-6">Обо мне</a>
             </li>
             <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Услуги</a>
+                <a href="#certificates" class="hover:underline me-4 md:me-6">Сертификаты</a>
             </li>
             <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Обо мне</a>
+                <a href="#services" class="hover:underline me-4 md:me-6">Услуги</a>
+            </li>
+            <li>
+                <a href="#reviews" class="hover:underline me-4 md:me-6">Отзывы</a>
             </li>
             <li>
                 <a href="https://katrinllandtg.t.me/" class="hover:underline" target="_blank">Telegram</a>
